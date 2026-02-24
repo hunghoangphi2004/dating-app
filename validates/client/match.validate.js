@@ -82,6 +82,7 @@ module.exports.validateAddSlot = async (req, res, next) => {
         const overlapping = await Availability.findOne({
             matchId,
             userId: currentUserId,
+            deleted: false,
             date,
             start: { $lt: end },
             end: { $gt: start }
