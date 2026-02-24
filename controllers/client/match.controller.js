@@ -100,80 +100,91 @@ module.exports.scheduleForm = async (req, res) => {
 };
 
 module.exports.addSlot = async (req, res) => {
-    const matchId = req.params.id;
-    const currentUserId = res.locals.user.id;
+    try {
+        const matchId = req.params.id;
+        const currentUserId = res.locals.user.id;
 
-    const { date, start, end } = req.body;
+        const { date, start, end } = req.body;
 
 
-    const match = await Match.findOne({
-        _id: matchId,
-        deleted: false,
-        status: { $in: ["matched", "scheduled"] }
-    });
+        const match = await Match.findOne({
+            _id: matchId,
+            deleted: false,
+            status: { $in: ["matched", "scheduled"] }
+        });
 
-    if (!match) {
-        return res.redirect("/user/match");
-    }
+        if (!match) {
+            return res.redirect("/user/match");
+        }
 
-    if (match.status === "scheduled") {
+        if (match.status === "scheduled") {
+            return res.redirect(req.get("referer"));
+        }
+
+        await Availability.create({
+            matchId,
+            userId: currentUserId,
+            date,
+            start,
+            end
+        });
+
+        const result = await matchService.checkAndScheduleMatch(matchId);
+
+        if (result === false) {
+            // thong bao chua tim duoc
+        }
+        req.flash("success", "Thêm lịch thành công");
+        return res.redirect(req.get("referer"));
+    } catch (err) {
+        req.flash("error", "Có lỗi xảy ra khi thêm lịch");
         return res.redirect(req.get("referer"));
     }
-
-    await Availability.create({
-        matchId,
-        userId: currentUserId,
-        date,
-        start,
-        end
-    });
-
-    const result = await matchService.checkAndScheduleMatch(matchId);
-
-    if (result === false) {
-        // thong bao chua tim duoc
-    }
-
-    return res.redirect(req.get("referer"));
 };
 
 module.exports.deleteSlot = async (req, res) => {
-    const { matchId, slotId } = req.params;
+    try {
+        const { matchId, slotId } = req.params;
 
-    const slot = await Availability.findOne({
-        _id: slotId,
-        deleted: false
-    });
+        const slot = await Availability.findOne({
+            _id: slotId,
+            deleted: false
+        });
 
-    if (!slot) return res.redirect(req.get("referer"));
+        if (!slot) return res.redirect(req.get("referer"));
 
-    // Xoá slot
-    await Availability.updateOne(
-        { _id: slotId },
-        { deleted: true }
-    );
+        // Xoá slot
+        await Availability.updateOne(
+            { _id: slotId },
+            { deleted: true }
+        );
 
-    const match = await Match.findOne({ _id: matchId });
+        const match = await Match.findOne({ _id: matchId });
 
-    if (!match) {
+        if (!match) {
+            return res.redirect(req.get("referer"));
+        }
+
+        // Nếu đang scheduled thì reset trước
+        if (match.status === "scheduled") {
+            await Match.updateOne(
+                { _id: matchId },
+                {
+                    status: "matched",
+                    scheduledDate: null,
+                    scheduledStart: null,
+                    scheduledEnd: null
+                }
+            );
+        }
+
+        // Tính lại từ đầu
+        await matchService.checkAndScheduleMatch(matchId);
+        req.flash("success", "Xoá lịch thành công");
+
+        res.redirect(req.get("referer"));
+    } catch (err) {
+        req.flash("error", "Có lỗi xảy ra khi xoá lịch");
         return res.redirect(req.get("referer"));
     }
-
-    // Nếu đang scheduled thì reset trước
-    if (match.status === "scheduled") {
-        await Match.updateOne(
-            { _id: matchId },
-            {
-                status: "matched",
-                scheduledDate: null,
-                scheduledStart: null,
-                scheduledEnd: null
-            }
-        );
-    }
-
-    // Tính lại từ đầu
-    await matchService.checkAndScheduleMatch(matchId);
-
-    res.redirect(req.get("referer"));
 };
