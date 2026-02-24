@@ -1,5 +1,22 @@
 # 💘 Dating App – Hệ thống Match & Tìm Slot Hẹn Hò
 
+---
+
+# 📜 Lời cam đoan
+
+Tôi cam kết đây là bài làm do tôi trực tiếp thiết kế và triển khai.
+
+Trong quá trình thực hiện, tôi có sử dụng AI (ChatGPT) như một công cụ hỗ trợ để:
+- Tham khảo hướng tiếp cận vấn đề
+- Tối ưu thuật toán
+- Cải thiện cách trình bày và cấu trúc tài liệu
+
+Tuy nhiên, toàn bộ logic nghiệp vụ, thiết kế hệ thống và việc triển khai code đều do tôi chủ động xây dựng và hiểu rõ cách hoạt động.
+
+Tôi hoàn toàn chịu trách nhiệm về nội dung và chất lượng của bài làm này.
+
+
+
 ## 1. GitHub Repository
 
 🔗 https://github.com/hunghoangphi2004/dating-app
@@ -66,8 +83,6 @@ Trong quá trình phát triển, tôi có sử dụng AI (ChatGPT) như một c�
 - Tham khảo cách tối ưu thuật toán
 - Hỗ trợ refactor và cải thiện cấu trúc code
 - Tìm hiểu thêm về best practices trong NodeJS và MongoDB
-
-Tuy nhiên, toàn bộ logic nghiệp vụ, thiết kế hệ thống và cách tổ chức code đều do tôi chủ động xây dựng và triển khai.
 
 
 # 💾 4. Lưu trữ dữ liệu
