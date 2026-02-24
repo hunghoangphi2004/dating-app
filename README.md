@@ -51,7 +51,7 @@ Project được tổ chức theo mô hình **MVC**:
 
 - **Models:** Định nghĩa cấu trúc dữ liệu (User, Match, Slot).
 - **Controllers:** Xử lý request/response.
-- **Routes:** Điều hướng API.
+- **Routes:** Định nghĩa các đường dẫn và điều hướng request.
 - **Views:** Render giao diện bằng EJS.
 - **Services:** Chứa thuật toán match và tìm slot trùng.
 - **Middlewares:** Xử lý xác thực, upload, validate...
@@ -169,9 +169,6 @@ Khi user A bấm "Like" user B:
   
   → status chuyển sang "matched"
   → lưu matchedAt
-
-### Nếu một bên dislike
-→ status chuyển sang "rejected"
 
 👉 Chỉ khi cả hai cùng like mới trở thành match thực sự.
 
