@@ -58,7 +58,7 @@ Project được tổ chức theo mô hình **MVC**:
 
 ---
 
-## 🤖 Công cụ hỗ trợ
+## Công cụ hỗ trợ
 
 Trong quá trình phát triển, tôi có sử dụng AI (ChatGPT) như một công cụ hỗ trợ để:
 
