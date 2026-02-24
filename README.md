@@ -2,14 +2,13 @@
 
 ## 1. GitHub Repository
 
-🔗 https://github.com/your-username/your-repo
+🔗 https://github.com/hunghoangphi2004/dating-app
 
 ---
 
 ## 2. Link Deploy Live
 
-🔗 https://your-project-url.vercel.app  
-(hoặc link Render nếu deploy bằng Render)
+🔗 https://dating-app-two-sigma.vercel.app/ 
 
 ---
 
