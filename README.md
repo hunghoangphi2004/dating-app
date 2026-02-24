@@ -174,6 +174,18 @@ Khi user A bấm "Like" user B:
   - actionA = "like"
   - actionAAt = thời điểm like
 - Status mặc định = "pending"
+- ```
+  if (!match) {
+            await Match.create({
+                userAId: currentUserId,
+                userBId: targetUserId,
+                actionA: "like",
+                actionAAt: new Date()
+
+            });
+            req.flash("success", "Đã thích!");
+        }
+  ```
 
 ### Trường hợp 2: Đã tồn tại Match
 - Cập nhật actionA hoặc actionB tùy người thực hiện
@@ -182,6 +194,26 @@ Khi user A bấm "Like" user B:
   
   → status chuyển sang "matched"
   → lưu matchedAt
+
+  ```
+  else {
+            if (match.userAId.toString() === currentUserId.toString()) {
+                match.actionA = "like";
+                match.actionAAt = new Date();
+            } else {
+                match.actionB = "like";
+                match.actionBAt = new Date();
+            }
+
+            if (match.actionA === "like" && match.actionB === "like") {
+                match.status = "matched";
+                match.matchedAt = new Date();
+                req.flash("success", "It’s a Match");
+            }
+
+            await match.save();
+        }
+  ```
 
 👉 Chỉ khi cả hai cùng like mới trở thành match thực sự.
 
@@ -210,9 +242,9 @@ Sau khi match thành công:
   - start
   - end
 
-Khi thêm slot:
+Khi thêm slot hoặc xoá slot:
 - Hệ thống gọi `matchService.checkAndScheduleMatch(matchId)`
-- Hàm này sẽ kiểm tra xem có slot trùng không
+- Hàm này sẽ kiểm tra xem có slot trùng không nếu thêm mới và reset match về trạng thái "matched" nếu xoá slot ảnh hưởng trực tiếp đến giờ đã hẹn
 
 ---
 
@@ -225,6 +257,10 @@ Nguyên tắc:
 3. So sánh:
    - Cùng ngày
    - Khoảng thời gian giao nhau
+4. Điều kiện kiểm tra overlap
+```
+if (dateA === dateB && a.start < b.end && a.end > b.start) {
+```
 
 Nếu tìm thấy:
 - Cập nhật Match:
@@ -258,37 +294,6 @@ Xoá slot → Tính lại
 - Có soft delete
 - Có reset trạng thái khi slot thay đổi
 - Logic rõ ràng theo từng bước
-
----
-
-
-Điều kiện này đảm bảo hai khoảng thời gian có phần chồng lấn.
-
----
-
-## Bước 3: Tính khoảng giao nhau
-
-Nếu có giao nhau:
-
-- overlapStart = max(a.start, b.start)
-- overlapEnd = min(a.end, b.end)
-
-Sau đó cập nhật Match:
-
-- status → "scheduled"
-- scheduledDate
-- scheduledStart
-- scheduledEnd
-
-Hàm dừng ngay khi tìm thấy slot trùng đầu tiên.
-
----
-
-## Nguyên tắc hoạt động
-
-- Nếu có ít nhất 1 slot trùng → Match được schedule
-- Nếu không có slot trùng → giữ nguyên trạng thái "matched"
-- Nếu slot bị xoá → hệ thống tính lại từ đầu
 
 ---
 
@@ -360,6 +365,72 @@ Nếu sau X ngày không schedule được:
 → Tránh hệ thống bị tồn nhiều match "chết".
 
 ---
+
+---
+
+# ⚙️ 5. Hướng dẫn cài đặt & chạy project
+
+## B1: Clone repository
+
+```bash
+git clone https://github.com/hunghoangphi2004/dating-app.git
+cd dating-app
+```
+## B2: Cài đặt dependencies
+```
+npm install
+```
+## B3: Cấu hình biến môi trường (.env)
+
+Tạo file .env ở thư mục gốc và thêm các biến sau:
+
+```
+PORT=3000
+MONGO_URL=your_mongodb_connection_string
+CLOUD_NAME=your_cloudinary_name
+CLOUD_KEY=your_cloudinary_key
+CLOUD_SECRET=your_cloudinary_secret
+```
+
+Giải thích:
+
+PORT: Cổng chạy server ở môi trường local (mặc định: 3000).
+
+MONGO_URL: Chuỗi kết nối đến MongoDB Atlas (hoặc MongoDB local).
+Dùng để backend kết nối tới database.
+
+CLOUD_NAME: Tên Cloudinary account.
+
+CLOUD_KEY: API Key của Cloudinary.
+
+CLOUD_SECRET: API Secret của Cloudinary. Dùng để xác thực khi upload và quản lý ảnh.
+
+## B4: Chạy ứng dụng
+```
+npm start
+```
+
+Hoặc :
+
+```
+node index.js
+```
+
+Ở thư mục gốc dự án
+
+## B5: Truy cập hệ thống
+
+Mở trình duyệt tại:
+
+http://localhost:3000
+
+📌 5. Yêu cầu hệ thống
+
+Node.js >= 16
+
+MongoDB Atlas hoặc MongoDB local
+
+Tài khoản Cloudinary để upload ảnh
 
 # 🎯 Tổng kết
 
