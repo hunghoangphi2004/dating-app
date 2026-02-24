@@ -57,6 +57,19 @@ Project được tổ chức theo mô hình **MVC**:
 - **Middlewares:** Xử lý xác thực, upload, validate...
 
 ---
+
+## 🤖 Công cụ hỗ trợ
+
+Trong quá trình phát triển, tôi có sử dụng AI (ChatGPT) như một công cụ hỗ trợ để:
+
+- Gợi ý hướng giải quyết vấn đề
+- Tham khảo cách tối ưu thuật toán
+- Hỗ trợ refactor và cải thiện cấu trúc code
+- Tìm hiểu thêm về best practices trong NodeJS và MongoDB
+
+Tuy nhiên, toàn bộ logic nghiệp vụ, thiết kế hệ thống và cách tổ chức code đều do tôi chủ động xây dựng và triển khai.
+
+
 # 💾 4. Lưu trữ dữ liệu
 
 Ứng dụng sử dụng **MongoDB Atlas (Cloud Database)** để lưu trữ toàn bộ dữ liệu phía backend thông qua **Mongoose ODM**.
