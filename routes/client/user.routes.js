@@ -11,7 +11,7 @@ const userValidate = require("../../validates/client/user.validate.js")
 
 router.get("/list", authMiddleware.requireAuth, userValidate.pagination, userController.list)
 router.get("/register", userController.register)
-router.post("/register", userValidate.register, upload.single('avatar'), uploadCloud.upload, userController.registerPost)
+router.post("/register", upload.single('avatar'), uploadCloud.upload, userController.registerPost)
 router.get("/login", userController.login)
 router.post("/login", userValidate.login, userController.loginPost)
 router.get("/logout", authMiddleware.requireAuth, userController.logout)
