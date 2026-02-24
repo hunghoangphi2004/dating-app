@@ -1,0 +1,25 @@
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-body">
+
+        <div class="d-flex flex-wrap align-items-center">
+
+            <span class="fw-bold me-3 mb-2">
+                Giới tính:
+            </span>
+
+            <% filterGender.forEach((item)=>{ %>
+                <button 
+                    type="button"
+                    class="btn btn-sm me-2 mb-2 
+                    <%= item.class ? 'btn-success' : 'btn-outline-success' %>"
+                    button-gender="<%= item.gender %>">
+
+                    <%= item.name %>
+
+                </button>
+            <% }) %>
+
+        </div>
+
+    </div>
+</div>

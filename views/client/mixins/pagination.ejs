@@ -1,0 +1,19 @@
+<div pagination class="pagination-fixed">
+    <nav>
+        <ul class="pagination mb-0 justify-content-center">
+            <li class="page-item <%= objectPagination.currentPage === 1 ? "disabled": "" %>"> 
+                <button class="page-link btn" button-pagination="<%= objectPagination.currentPage - 1 %>">Prev</button>
+            </li>
+
+            <% for( let i = 1 ; i <= objectPagination.totalPage ; i ++ ){ %>
+                <li class="page-item <%= i === objectPagination.currentPage ? "active" : "" %>"> 
+                    <button class="page-link btn" button-pagination="<%= i %>"><%= i %></button>
+                </li>
+            <% } %>
+
+            <li class="page-item <%= objectPagination.currentPage === objectPagination.totalPage ? "disabled": "" %>"> 
+                <button class="page-link btn" button-pagination="<%= objectPagination.currentPage + 1 %>">Next</button>
+            </li>
+        </ul>
+    </nav>
+</div>

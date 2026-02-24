@@ -1,0 +1,112 @@
+<h1>Cài đặt chung</h1>
+
+<form action="/admin/settings/general?_method=PATCH"
+      method="POST" 
+      enctype="multipart/form-data">
+
+    <!-- Website name -->
+    <div class="form-group">
+        <label for="websiteName">Tên website</label>
+        <input type="text"
+               class="form-control"
+               id="websiteName"
+               name="websiteName"
+               value="<%= settingGeneral?.websiteName || '' %>">
+    </div>
+
+    <!-- Phone -->
+    <div class="form-group">
+        <label for="phone">Số điện thoại</label>
+        <input type="text"
+               class="form-control"
+               id="phone"
+               name="phone"
+               value="<%= settingGeneral?.phone || '' %>">
+    </div>
+    
+
+    <!-- Email -->
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text"
+               class="form-control"
+               id="email"
+               name="email"
+               value="<%= settingGeneral?.email || '' %>">
+    </div>
+
+    <!-- Address -->
+    <div class="form-group">
+        <label for="address">Địa chỉ</label>
+        <input type="text"
+               class="form-control"
+               id="address"
+               name="address"
+               value="<%= settingGeneral?.address || '' %>">
+    </div>
+
+    <!-- Copyright -->
+    <div class="form-group">
+        <label for="copyright">Copyright</label>
+        <input type="text"
+               class="form-control"
+               id="copyright"
+               name="copyright"
+               value="<%= settingGeneral?.copyright || '' %>">
+    </div>
+
+    <hr>
+
+    <div class="form-group">
+        <label for="hero">Hero</label>
+        <input type="text"
+               class="form-control"
+               id="hero"
+               name="hero"
+               value="<%= settingGeneral?.hero || '' %>">
+    </div>
+
+    <h4>Thông tin trang about</h4>
+
+    <div class="form-group">
+        <label for="aboutTitle">About Title</label>
+        <input type="text"
+               class="form-control"
+               id="aboutTitle"
+               name="aboutTitle"
+               value="<%= settingGeneral?.aboutTitle || '' %>">
+    </div>
+
+    <!-- About avatar -->
+    <div class="form-group" upload-image>
+        <label for="aboutAvatar">Avatar</label>
+        <br>
+        <input type="file"
+               class="form-control-file"
+               id="aboutAvatar"
+               name="aboutAvatar"
+               accept="image/*"
+               upload-image-input>
+
+        <img src="<%= settingGeneral?.aboutAvatar || '' %>"
+             alt="Preview"
+             upload-image-preview
+             class="image-preview">
+    </div>
+
+    <!-- About content -->
+    <div class="form-group">
+        <label for="aboutContent">Nội dung About</label>
+        <textarea class="form-control textarea-mce"
+                  id="aboutContent"
+                  name="aboutContent"
+                  rows="5"><%= settingGeneral?.aboutContent || '' %></textarea>
+    </div>
+
+    <button class="btn btn-primary" type="submit">
+        Cập nhật
+    </button>
+
+</form>
+
+<script src="/admin/js/settings.js"></script>

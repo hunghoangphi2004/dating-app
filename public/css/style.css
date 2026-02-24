@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+.image-preview {
+    width: 200px;
+    height: auto;
+}
+
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.admin-sider {
+    width: 280px;
+    background: orange;
+    color: green;
+    flex-shrink: 0;
+}
+
+.admin-content {
+    flex: 1;
+    padding: 24px;
+    background: #f5f6fa;
+}
+
+
+/* alert */
+.flash-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.flash-message {
+    min-width: 280px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: slideIn 0.3s ease forwards;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.flash-success {
+    background: linear-gradient(135deg, #28a745, #218838);
+}
+
+.flash-error {
+    background: linear-gradient(135deg, #dc3545, #b02a37);
+}
+
+.flash-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.flash-close:hover {
+    opacity: 0.7;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+/* end alert */

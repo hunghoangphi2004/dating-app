@@ -1,0 +1,7 @@
+<div class="filter-status">
+    <% filterStatus.forEach((item)=>{%>
+        <button class="btn btn-sm ml-1 btn-outline-success <%= item.class%>" button-status="<%= item.status%>">
+            <%= item.name %>
+        </button>
+        <% }) %>
+</div>

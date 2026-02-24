@@ -1,0 +1,83 @@
+<form action="/admin/blogs/edit/<%= blog._id %>?_method=PATCH" method="POST" enctype="multipart/form-data">
+
+    <!-- Tiêu đề -->
+    <div class="mb-3">
+        <label class="form-label fw-semibold">Tiêu đề bài viết</label>
+        <input type="text" name="title" class="form-control" placeholder="Nhập tiêu đề bài viết..." required
+            value="<%= blog.title %>">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label fw-semibold">Tags</label>
+
+        <select id="select-state" name="tags[]" multiple autocomplete="off">
+            <% allTags.forEach(tag=> { %>
+                <% const selected=blog.tags.some(t=> t.tagId.toString() === tag._id.toString()); %>
+
+                    <option value="<%= tag._id %>" <%=selected ? 'selected' : '' %>
+                        data-bg="<%= tag.color.bg %>"
+                            data-color="<%= tag.color.text %>">
+                                <%= tag.name %>
+                    </option>
+                    <% }) %>
+        </select>
+
+    </div>
+
+    <!-- Nội dung -->
+    <div class="mb-3">
+        <label class="form-label fw-semibold">Nội dung</label>
+        <textarea class="form-control textarea-mce" name="content" rows="10"
+            placeholder="Nội dung bài viết..."><%- blog.content %></textarea>
+    </div>
+
+    <div class="form-group form-check form-check-inline mb-3">
+        <input type="radio" name="status" value="draft" <%=blog.status==='draft' ? 'checked' : '' %> />
+        <label for="statusDraft" class="form-check-label">Nháp</label>
+    </div>
+
+    <div class="form-group form-check form-check-inline mb-3">
+        <input type="radio" name="status" value="published" <%=blog.status==='published' ? 'checked' : '' %> />
+        <label for="statusPublished" class="form-check-label">Xuất bản</label>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label fw-semibold">Trạng thái khoá</label>
+        <br>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="locked" id="lockedFalse" value="false" <%=!blog.locked
+                ? 'checked' : '' %>>
+            <label class="form-check-label text-success" for="lockedFalse">
+                Chưa khoá
+            </label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="locked" id="lockedTrue" value="true" <%=blog.locked
+                ? 'checked' : '' %>>
+            <label class="form-check-label text-danger" for="lockedTrue">
+                Đã khoá
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group mb-3" upload-image>
+        <label for="thumbnail">Ảnh</label>
+        <br>
+        <input type="file" class="form-control-file" id="thumbnail" name="thumbnail" accept="image/*"
+            upload-image-input />
+        <img src="<%= blog.thumbnail%>" alt="Preview" upload-image-preview class="image-preview" />
+    </div>
+
+    <!-- Actions -->
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">
+            Lưu bài viết
+        </button>
+        <a href="/admin/blogs" class="btn btn-outline-secondary">
+            Huỷ
+        </a>
+    </div>
+</form>
+
+<script src="/admin/js/blog.js"></script>

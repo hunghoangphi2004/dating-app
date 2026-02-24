@@ -1,0 +1,83 @@
+<div class="mb-3">
+    <label class="form-label fw-semibold">Tiêu đề bài viết</label>
+    <input type="text" name="title" class="form-control" value="<%= blog.title %>" readonly>
+</div>
+
+<div class="mb-3">
+    <label class="form-label fw-semibold">Slug</label>
+    <input type="text" name="slug" class="form-control" value="<%= blog.slug %>" readonly>
+</div>
+
+<div class="mb-3">
+    <label class="form-label fw-semibold">Ngày tạo</label>
+    <input type="text" class="form-control" value="<%= new Date(blog.createdBy.createdAt).toLocaleString('vi-VN') %>"
+        readonly>
+</div>
+
+<div class="mb-3">
+    <label class="form-label fw-semibold">Ngày xuất bản</label>
+
+    <% if (blog.publishedAt) { %>
+        <input type="text" class="form-control" value="<%= new Date(blog.publishedAt).toLocaleString('vi-VN') %>"
+            readonly>
+        <% } else { %>
+            <input type="text" class="form-control text-muted" value="Chưa xuất bản" readonly>
+            <% } %>
+</div>
+
+
+<textarea class="form-control textarea-mce" name="content" rows="10"
+    placeholder="Nội dung bài viết..."><%- blog.content %></textarea>
+
+
+<div class="mb-3">
+    <div class="form-group form-check form-check-inline mb-3">
+        <input type="radio" class="form-check-input" id="statusDraft" name="status" value="draft" disabled
+            <%=blog.status==="draft" ? "checked" : "" %> />
+        <label for="statusDraft" class="form-check-label">Nháp</label>
+    </div>
+
+    <div class="form-group form-check form-check-inline mb-3">
+        <input type="radio" class="form-check-input" id="statusPublished" name="status" value="published" disabled
+            <%=blog.status==="published" ? "checked" : "" %> />
+        <label for="statusPublished" class="form-check-label">Xuất bản</label>
+    </div>
+</div>
+
+<div class="mb-3">
+    <% if (blog.locked) { %>
+        <span class="btn btn-danger" disabled>Đã khoá</span>
+        <% } else { %>
+            <span class="btn btn-success" disabled>Chưa khoá</span>
+            <% } %>
+
+</div>
+
+<div class="form-group mb-3" upload-image>
+    <label for="thumbnail">Ảnh</label>
+    <br><br>
+    <!-- <input type="file" class="form-control-file" id="thumbnail" name="thumbnail" accept="image/*" upload-image-input /> -->
+    <img src="<%= blog.thumbnail %>" alt="Preview" upload-image-preview class="image-preview" />
+</div>
+
+<div class="mb-3">
+    <label class="form-label fw-semibold">Tags</label>
+    <ul class="tag-list mb-3">
+        <% blog.tagsDetail.forEach((item)=>{ %>
+            <li class="tag" data-name="<%= item.name %>" data-bg="<%= item.color.bg %>"
+                data-text="<%= item.color.text %>">
+                <%= item.name %>
+            </li>
+            <% }) %>
+    </ul>
+</div>
+
+
+<div class="d-flex gap-2">
+    <a href="/admin/blogs" class="btn btn-outline-secondary">
+        Huỷ
+    </a>
+</div>
+</form>
+
+<script src="/admin/js/blog.js"></script>

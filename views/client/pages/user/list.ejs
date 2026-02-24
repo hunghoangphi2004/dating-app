@@ -1,0 +1,52 @@
+<div class="container mt-4">
+    <div class="row">
+        <%- include("../../mixins/filterGender.ejs") %>
+            <%- include("../../mixins/filterAge.ejs") %>
+                <% users.forEach(user=> { %>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="card shadow-sm h-100 border-0">
+
+                            <div class="d-flex justify-content-center pt-3">
+                                <div style="width:200px; height:200px;">
+                                    <img src="<%= user.avatar %>" class="rounded shadow-sm"
+                                        style="width:100%; height:100%; object-fit:cover;" alt="<%= user.name %>">
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                                <h5 class="card-title mb-1">
+                                    <%= user.name %>, <%= user.age %>
+                                </h5>
+
+                                <p class="text-muted mb-2">
+                                    <%= user.gender==="male" ? "Nam" : "Nữ" %>
+                                </p>
+
+                                <p class="card-text">
+                                    <%= user.bio %>
+                                </p>
+                            </div>
+
+                            <div class="card-footer bg-white border-0 pt-0 pb-3">
+                                <div class="d-flex justify-content-between gap-2">
+
+                                    <a href="/user/<%= user._id %>" class="btn btn-outline-primary btn-sm w-50">
+                                        <i class="bi bi-person"></i> Hồ sơ
+                                    </a>
+
+                                    <form action="/user/like/<%= user._id %>" method="POST" class="w-50">
+                                        <button type="submit" class="btn btn-danger btn-sm w-100">
+                                            <i class="bi bi-heart-fill"></i> Thích
+                                        </button>
+                                    </form>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <% }) %>
+    </div>
+</div>
+
+<%- include("../../mixins/pagination.ejs") %>

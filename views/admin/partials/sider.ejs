@@ -1,0 +1,44 @@
+<div class="sider">
+    <div class="sider-info">
+        <div class="inner-wrap">
+            <div class="avatar">
+                <img src="/images/2tp.jpg" alt="">
+            </div>
+            <div class="info-account">
+                <span class="info-name"><%= user?.fullname%></span>
+                <span class="info-email"><%= user?.email%></span>
+            </div>
+        </div>
+    </div>
+    <div class="sider-menu">
+        <ul>
+            <li class="sider-item">
+                <i class="fa-solid fa-blog"></i>
+                <a href="/admin/blogs" target="_self">Bài viết</a>
+            </li>
+            <li class="sider-item">
+                <i class="fa-solid fa-tag"></i>
+                <a href="/admin/tags" target="_self">Thể loại</a>
+            </li>
+            <li class="sider-item">
+                <i class="fa-solid fa-gear"></i>
+                <a href="/admin/settings/general" target="_self">Cài đặt chung</a>
+            </li>
+            <li class="sider-item">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <a href="/admin/auth/logout" target="_self">Đăng xuất</a>
+            </li>
+        </ul>
+        <div class="toggle-theme">
+            <div class="toggle-thumb"></div>
+            <div class="toggle-option light">
+                <i class="fa-regular fa-sun"></i>
+                <span>Light</span>
+            </div>
+            <div class="toggle-option dark">
+                <i class="fa-regular fa-moon"></i>
+                <span>Dark</span>
+            </div>
+        </div>
+    </div>
+</div>

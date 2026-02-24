@@ -1,0 +1,65 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h3 class="text-center mb-4">Tạo tài khoản</h3>
+
+          <form method="POST" action="/user/register" enctype="multipart/form-data">
+
+            <div class="mb-2">
+              <label class="form-label">Email</label>
+              <input type="email" name="email" class="form-control" required>
+            </div>
+
+            <div class="mb-2">
+              <label class="form-label">Mật khẩu</label>
+              <input type="password" name="password" class="form-control" required>
+            </div>
+
+            <div class="mb-2">
+              <label class="form-label">Tên đầy đủ</label>
+              <input type="text" name="name" class="form-control" required>
+            </div>
+
+            <div class="mb-2">
+              <label class="form-label">Tuổi</label>
+              <input type="number" name="age" class="form-control" min="18" required>
+            </div>
+
+            <div class="mb-2">
+              <label class="form-label">Giới tính</label>
+              <select name="gender" class="form-select" required>
+                <option value="">-- Chọn giới tính --</option>
+                <option value="male">Nam</option>
+                <option value="female">Nữ</option>
+                <option value="other">Khác</option>
+              </select>
+            </div>
+
+            <!-- Bio -->
+            <div class="mb-2">
+              <label class="form-label">Bio</label>
+              <textarea name="bio" class="form-control" rows="3"></textarea>
+            </div>
+
+            <!-- Avatar -->
+            <div class="form-group mb-2" upload-image>
+              <label for="avatar">Ảnh</label>
+              <br>
+              <input type="file" class="form-control-file mb-4" id="avatar" name="avatar" accept="image/*"
+                upload-image-input />
+              <img src="" alt="Preview" upload-image-preview class="image-preview" />
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">
+              Đăng ký
+            </button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

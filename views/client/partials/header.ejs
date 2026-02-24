@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+
+        <a class="navbar-brand fw-bold" href="/user/list">
+            <%- user?.name%>
+        </a>
+
+        <div class="d-flex align-items-center ms-auto">
+
+            <a href="/user/profile"
+               class="btn btn-primary btn-sm me-2">
+                Profile
+            </a>
+
+            <a href="/user/logout"
+               class="btn btn-danger btn-sm">
+                Đăng xuất
+            </a>
+
+        </div>
+
+    </div>
+</nav>

@@ -1,0 +1,72 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <h3 class="text-center mb-4">Trang cá nhân</h3>
+
+                    <div class="text-center mb-4">
+                        <% if (user.avatar) { %>
+                            <img src="<%= user.avatar %>" class="rounded-circle" width="150" height="150"
+                                style="object-fit: cover;">
+                            <% } else { %>
+                                <img src="https://via.placeholder.com/150" class="rounded-circle">
+                                <% } %>
+                    </div>
+
+                    <form action="/user/edit-profile" method="POST" enctype="multipart/form-data">
+
+                        <div class="mb-3">
+                            <label class="form-label">Tên</label>
+                            <input type="text" class="form-control" name="name" value="<%= user.name %>" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Tuổi</label>
+                            <input type="number" class="form-control" name="age" value="<%= user.age %>" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Giới tính</label>
+                            <select class="form-select" name="gender">
+                                <option value="male" <%=user.gender==="male" ? "selected" : "" %>>
+                                    Nam
+                                </option>
+                                <option value="female" <%=user.gender==="female" ? "selected" : "" %>>
+                                    Nữ
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Bio</label>
+                            <textarea class="form-control" name="bio" rows="3"><%= user.bio %></textarea>
+                        </div>
+
+                        <!-- Avatar -->
+                        <div class="form-group mb-2" upload-image>
+                            <label for="avatar">Ảnh</label>
+                            <br>
+                            <input type="file" class="form-control-file mb-4" id="avatar" name="avatar" accept="image/*"
+                                upload-image-input />
+                            <img src="" alt="Preview" upload-image-preview class="image-preview" />
+                        </div>
+
+                        <div class="text-center">
+                            <button class="btn btn-primary">
+                                Cập nhật
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        <%= title %>
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="bg-light">
+
+    <%- include("../partials/header.ejs") %>
+        <div class="flash-container">
+            <% if (messages.success) { %>
+                <div class="flash-message flash-success">
+                    <span>
+                        <%= messages.success %>
+                    </span>
+                    <button class="flash-close">&times;</button>
+                </div>
+                <% } %>
+
+                    <% if (messages.error) { %>
+                        <div class="flash-message flash-error">
+                            <span>
+                                <%= messages.error %>
+                            </span>
+                            <button class="flash-close">&times;</button>
+                        </div>
+                        <% } %>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+
+                <!-- SIDEBAR -->
+                <div class="col-md-3 col-lg-2 bg-white border-end min-vh-100 p-3">
+                    <%- include("../partials/sider.ejs") %>
+                </div>
+
+                <!-- CONTENT -->
+                <div class="col-md-9 col-lg-10 p-4">
+                    <%- body %>
+                </div>
+
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/script.js"></script>
+
+</body>
+
+</html>

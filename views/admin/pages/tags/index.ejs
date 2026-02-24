@@ -1,0 +1,74 @@
+<div class="admin-header mb-3">
+    <div class="admin-header-left">
+        <% if (search) { %>
+            <%- include("../../mixins/search.ejs") %>
+                <% } %>
+    </div>
+
+    <div class="admin-header-right">
+        <% if (create) { %>
+            <%- include("../../mixins/createButton.ejs") %>
+                <% } %>
+    </div>
+</div>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="mb-0">
+        <%= title %>
+    </h3>
+</div>
+
+<table class="table table-bordered table-hover align-middle">
+    <thead class="table-light">
+        <tr>
+            <th style="width: 60px">#</th>
+            <th>Tên</th>
+            <th>Hiển thị</th>
+            <th style="width: 300px" class="text-center">Thao tác</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% if (allTag.length===0) { %>
+            <tr>
+                <td colspan="4" class="text-center text-muted py-4">
+                    Chưa có tag nào
+                </td>
+            </tr>
+            <% } %>
+
+                <% for (let i=0; i < allTag.length; i++) { %>
+                    <tr>
+                        <td>
+                            <%= ( objectPagination.currentPage - 1 ) *  objectPagination.limitItems + i + 1 %>
+                        </td>
+
+                        <td>
+                            <strong>
+                                <%= allTag[i].name %>
+                            </strong>
+                        </td>
+
+                        <td>
+                            <span class="tag-badge px-2 py-1 rounded" style="
+                            background-color: <%= allTag[i].color.bg %>;
+                            color: <%= allTag[i].color.text %>;
+                        ">
+                                <%= allTag[i].name %>
+                            </span>
+                        </td>
+
+                        <td class="text-center">
+                            <div class="d-inline-flex gap-1">
+                                <%- include("../../mixins/detailButton.ejs", { id: allTag[i]._id }) %>
+                                <%- include("../../mixins/editButton.ejs", { id: allTag[i]._id }) %>
+
+                                    <%- include("../../mixins/deleteButton.ejs", { id: allTag[i]._id }) %>
+                            </div>
+                        </td>
+                    </tr>
+                    <% } %>
+    </tbody>
+</table>
+
+<%- include("../../mixins/pagination.ejs") %>
+<!-- <script src="/admin/js/script.js"></script> -->
