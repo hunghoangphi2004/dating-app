@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express")
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 const database = require("./config/database");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
@@ -36,6 +36,12 @@ database.connectDB();
 // adminRoutes(app);
 clientRoutes(app);
 
+app.get('/{*any}', (req, res) => {
+  res.status(404).render("client/pages/errors/404", {
+        layout: false,
+        title: "404",
+    })
+});
 
 app.listen(port, ()=>{
     console.log(`Run on port ${port}`);
