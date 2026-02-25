@@ -19,16 +19,17 @@ Tôi hoàn toàn chịu trách nhiệm về nội dung và chất lượng của
 
 ## 1. GitHub Repository
 
-🔗 https://dating-app-bx9o.onrender.com/
 🔗 https://github.com/hunghoangphi2004/dating-app
-
-Bạn có thể vào link còn lại nếu 1 trong 2 link bị lỗi
 
 ---
 
 ## 2. Link Deploy Live
 
+🔗 https://dating-app-bx9o.onrender.com/
+
 🔗 https://dating-app-two-sigma.vercel.app/ 
+
+Bạn có thể vào link còn lại nếu 1 trong 2 link bị lỗi
 
 🔐 Tài khoản test
 
