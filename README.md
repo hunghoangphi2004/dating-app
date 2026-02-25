@@ -25,29 +25,43 @@ Tôi hoàn toàn chịu trách nhiệm về nội dung và chất lượng của
 
 ## 2. Link Deploy Live
 
+🌐 **Render (Khuyến nghị sử dụng):**  
 🔗 https://dating-app-bx9o.onrender.com/
 
-🔗 https://dating-app-two-sigma.vercel.app/ 
+🌐 **Vercel (Link dự phòng):**  
+🔗 https://dating-app-two-sigma.vercel.app/
 
-Bạn có thể vào link còn lại nếu 1 trong 2 link bị lỗi
-
-🔐 Tài khoản test
-
-Bạn có thể sử dụng các tài khoản sau để đăng nhập:
-
-Account 1
-
-Email: nhph20049@gmail.com
-
-Password: 123456
-
-Account 2
-
-Email: maitran21@gmail.com
-
-Password: 123456
+>  Nếu một trong hai link gặp lỗi (do sleep free tier), vui lòng thử link còn lại.
 
 ---
+
+## 🔐 Tài khoản Test
+
+Bạn có thể sử dụng các tài khoản sau để trải nghiệm đầy đủ tính năng:
+
+### 👤 Account 1
+- **Email:** nhph20049@gmail.com  
+- **Password:** 123456  
+
+### 👤 Account 2
+- **Email:** maitran21@gmail.com  
+- **Password:** 123456  
+
+---
+
+## 🎥 Video Demo
+
+Video minh hoạ toàn bộ luồng hoạt động của hệ thống:
+
+- Đăng nhập
+- Like & Match
+- Thêm slot thời gian rảnh
+- Tự động tìm slot trùng nhau
+- Cập nhật trạng thái Scheduled
+- Reset match khi xoá slot
+
+🔗 Xem tại đây:  
+https://www.youtube.com/watch?v=G9PgA4vv314
 
 # 🧱 3. Mô tả cách tổ chức hệ thống
 
