@@ -455,8 +455,3 @@ Logic hiện tại:
 - Dễ hiểu
 - Phù hợp quy mô nhỏ – trung bình
 - Đảm bảo tính đúng đắn của trạng thái match
-
-Thiết kế này thể hiện rõ:
-- Tư duy state management
-- Tách business logic ra service
-- Xử lý lại trạng thái khi dữ liệu thay đổi
