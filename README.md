@@ -27,6 +27,22 @@ Tôi hoàn toàn chịu trách nhiệm về nội dung và chất lượng của
 
 🔗 https://dating-app-two-sigma.vercel.app/ 
 
+🔐 Tài khoản test
+
+Bạn có thể sử dụng các tài khoản sau để đăng nhập:
+
+Account 1
+
+Email: nhph20049@gmail.com
+
+Password: 123456
+
+Account 2
+
+Email: maitran21@gmail.com
+
+Password: 123456
+
 ---
 
 # 🧱 3. Mô tả cách tổ chức hệ thống
