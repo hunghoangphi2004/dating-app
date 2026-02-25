@@ -20,6 +20,9 @@ Tôi hoàn toàn chịu trách nhiệm về nội dung và chất lượng của
 ## 1. GitHub Repository
 
 🔗 https://github.com/hunghoangphi2004/dating-app
+🔗 https://dating-app-bx9o.onrender.com/
+
+Bạn có thể vào link còn lại nếu 1 trong 2 link bị lỗi
 
 ---
 
